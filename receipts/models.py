@@ -31,6 +31,7 @@ class Account(models.Model):
 
 
 class Receipt(models.Model):
+
     vendor = models.CharField(max_length=200)
     total = models.DecimalField(max_digits=10, decimal_places=3)
     tax = models.DecimalField(max_digits=10, decimal_places=3)
@@ -41,12 +42,12 @@ class Receipt(models.Model):
         on_delete=models.CASCADE,
     )
     category = models.ForeignKey(
-        ExpenseCategory,
+        "ExpenseCategory",
         related_name="receipts",
         on_delete=models.CASCADE,
     )
     account = models.ForeignKey(
-        Account,
+        "Account",
         related_name="receipts",
         on_delete=models.CASCADE,
         null=True,
